@@ -1,0 +1,40 @@
+=(LEFT(H2,1)*12+MID(H2,3,LEN(H2)-3))-60
+
+=IF(J2="MALE", S2/(50+2.3*G2), S2/(45.5+2.3*G2))
+
+
+
+Sub firstTV()
+    Dim i, curP, numP, loc, firstTV, firstDate, lastTV, yesECMO
+        numP = 0
+        i = 2
+        curP = Worksheets("Initial").Cells(i, 5)
+        loc = Worksheets("Initial").Cells(i, 3)
+        firstTV = Worksheets("Initial").Cells(i, 20)
+        firstDate = Worksheets("Initial").Cells(i, 16)
+        yesECMO = Worksheets("Initial").Cells(i, 18)
+                lastTV = Worksheets("Initial").Cells(i, 20)
+        Do While curP <> ""
+            Do While curP = Worksheets("Initial").Cells(i, 5)
+                    lastTV = Worksheets("Initial").Cells(i, 20)
+                i = i + 1
+                DoEvents
+            Loop
+            numP = numP + 1
+            Worksheets("Output").Cells(numP, 1) = curP
+            Worksheets("Output").Cells(numP, 2) = loc
+            Worksheets("Output").Cells(numP, 3) = firstTV
+            
+            Worksheets("Output").Cells(numP, 4) = lastTV
+            Worksheets("Output").Cells(numP, 5) = firstDate
+            Worksheets("Output").Cells(numP, 6) = yesECMO
+            curP = Worksheets("Initial").Cells(i, 5)
+            loc = Worksheets("Initial").Cells(i, 3)
+            firstTV = Worksheets("Initial").Cells(i, 20)
+                    lastTV = Worksheets("Initial").Cells(i, 20)
+            firstDate = Worksheets("Initial").Cells(i, 16)
+           yesECMO = Worksheets("Initial").Cells(i, 18)
+        Loop
+End Sub
+
+
